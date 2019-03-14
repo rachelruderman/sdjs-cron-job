@@ -1,0 +1,29 @@
+{
+  "name": "cron-job",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel lib -d dist",
+    "start": "npm run build && nodemon dist/index.js",
+    "serve": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rachelruderman@github.com/rachelruderman/cron-job.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachelruderman/cron-job/issues"
+  },
+  "homepage": "https://github.com/rachelruderman/cron-job#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.16.4",
+    "fs": "^0.0.1-security",
+    "node-cron": "^2.0.3",
+    "nodemon": "^1.18.10"
+  }
+}
