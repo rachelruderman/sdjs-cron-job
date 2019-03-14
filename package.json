@@ -21,9 +21,11 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "fs": "^0.0.1-security",
     "node-cron": "^2.0.3",
+    "nodemailer": "^5.1.1",
     "nodemon": "^1.18.10"
   }
 }
