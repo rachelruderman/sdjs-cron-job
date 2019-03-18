@@ -52,7 +52,6 @@ const test = async () => {
             })
         }
 
-        // join us at 7 pm tomorrow at _name___ ___link___
         // await createTweet({status: 'test'});
         // await sendEmail({message: 'success'});
     }
