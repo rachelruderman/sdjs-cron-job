@@ -20,5 +20,5 @@ export const sendEmail = ({message}) => {
         html:       '<p>Test</p>'// plain text body
     };
 
-    gmailTransporter.sendMail(mailOptions);
+    return gmailTransporter.sendMail(mailOptions);
 };

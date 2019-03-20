@@ -62,4 +62,7 @@ const test = async () => {
     }
 };
 
-test();
+
+test()
+    .then   ((data)  => console.log({data}))
+    .catch  ((error) => console.log({error});
