@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {iso8601DateFormatter} from "../../util/iso8601DateFormatter";
+import {toIso8601} from "../../util/toIso8601";
 
-const getStartOfDay     = (date) => iso8601DateFormatter(Math.floor(date / dayInMs) * dayInMs);
-const getEndOfDay       = (date) => iso8601DateFormatter(getStartOfDay(date) + dayInMs - 1);
+const getStartOfDay     = (date) => (Math.floor(date / dayInMs) * dayInMs);
+const getEndOfDay       = (date) => (getStartOfDay(date) + dayInMs - 1);
 const dayInMs           = 86400000;
 
 export const getMeetups = ({when}) => {
@@ -13,9 +13,9 @@ export const getMeetups = ({when}) => {
 
     switch (when) {
         case ('tomorrow'):
-            return axios.get(`${baseUrl}?no_earlier_than=${getStartOfDay(tomorrow)}&no_later_than=${getEndOfDay(tomorrow)}`);
+            return axios.get(`${baseUrl}?no_earlier_than=${toIso8601(getStartOfDay(tomorrow))}&no_later_than=${toIso8601(getEndOfDay(tomorrow))}`);
         case ('week'):
-            return axios.get(`${baseUrl}?no_earlier_than=${getStartOfDay(today)}&no_later_than=${getEndOfDay(thisWeek)}`);
+            return axios.get(`${baseUrl}?no_earlier_than=${toIso8601(getStartOfDay(today))}&no_later_than=${toIso8601(getEndOfDay(thisWeek))}`);
         default:
             return new Error('Unrecognized parameter passed to getMeetups');
     }

@@ -20,7 +20,10 @@ export const weeklyCronJob = new CronJob(sunday11am, async () => {
             await sendTweet({status});
         }
         catch (error) {
-            errors.push(`Error: ${JSON.stringify(error)}`);
+            const {message, stack, response} = error;
+            if (response && response.data) message.concat(response.data);
+            errors.push(`error: ${JSON.stringify({message, stack})}`);
+            console.log({error});
         }
         finally {
             const subject = (errors.length < 1) ? 'Weekly Cron Job Success!' : 'Uh oh! Weekly cron job gone wild...';

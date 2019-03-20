@@ -10,7 +10,13 @@ const daily9am = '0 9 * * *';
 
 export const dailyCronJob = new CronJob(daily9am, async () => {
         const errors        = [];
-        const onError       = (error) => errors.push(`error: ${JSON.stringify(error)}`);
+
+        const onError       = ((error) => {
+            const {message, stack, response} = error;
+            if (response && response.data) message.concat(response.data);
+            errors.push(`error: ${JSON.stringify({message, stack})}`);
+            console.log({error});
+        });
 
         try {
             const meetups   = await getMeetups({when: 'tomorrow'});

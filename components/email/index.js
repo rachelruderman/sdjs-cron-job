@@ -28,8 +28,8 @@ export const sendEmail = async ({subject = '', body = ''}) => {
         const mailOptions = {
             from:       dev_EMAIL_ADDRESS,
             to:         dev_EMAIL_ADDRESS,
-            subject:    subject, // Subject line
-            html:       `<p>${body}</p>`// plain text body
+            subject:    subject,
+            html:       `<p>${body}</p>`
         };
 
         smtpTransport.sendMail(mailOptions);
