@@ -33,8 +33,9 @@ export const dailyCronJob = new CronJob(daily9am, async () => {
             onError(error);
         }
         finally {
-            const message = (errors.length < 1) ? 'Daily Cron Job Success!' : errors.join('\n');
-            sendEmail({message}).catch( (error) => console.log({error}))
+            const subject = (errors.length < 1) ? 'Daily Cron Job Success!' : 'Uh oh! Daily cron job gone wild...';
+            const body    = (errors.length < 1) ? 'Awesome sauce'            : errors.join('\n');
+            sendEmail({subject, body}).catch( (error) => console.log({error}))
         }
     },
     null, true, timezone

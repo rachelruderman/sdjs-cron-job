@@ -23,8 +23,9 @@ export const weeklyCronJob = new CronJob(sunday11am, async () => {
             errors.push(`Error: ${JSON.stringify(error)}`);
         }
         finally {
-            const message = (errors.length < 1) ? 'Weekly Cron Job Success!' : errors.join('\n');
-            sendEmail({message}).catch( (error) => console.log({error}))
+            const subject = (errors.length < 1) ? 'Weekly Cron Job Success!' : 'Uh oh! Weekly cron job gone wild...';
+            const body    = (errors.length < 1) ? 'Awesome sauce'            : errors.join('\n');
+            sendEmail({subject, body}).catch( (error) => console.log({error}))
         }
     },
     null, true, timezone
