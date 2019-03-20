@@ -1,13 +1,17 @@
-require('dotenv').config();
 import axios from 'axios';
+import {iso8601DateFormatter} from "../../util/iso8601DateFormatter";
 
 export const getMeetups = ({when}) => {
+    const dayInMs   = 86400000;
+    const tomorrow  = (Date.now() + dayInMs);
+    const week      = (Date.now() + (dayInMs * 6));
+
     switch (when) {
         case ('tomorrow'):
-            const tomorrow      = (Date.now() + 86400000);
-            const iso8601Date   = new Date(tomorrow).toISOString().slice(0, -1);
-            return axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${iso8601Date}`);
+            return axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${iso8601DateFormatter(tomorrow)}`);
+        case ('week'):
+            return axios.get(`https://api.meetup.com/sandiegojs/events?no_later_than=${iso8601DateFormatter(week)}`);
         default:
-            return axios.get(`https://api.meetup.com/sandiegojs/events`);
+            return new Error('Unrecognized parameter passed to getMeetups');
     }
 };

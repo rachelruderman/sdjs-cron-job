@@ -13,4 +13,4 @@ const twitter = new Twitter({
     access_token_secret:    dev_TWITTER_ACCESS_TOKEN_SECRET
 });
 
-export const createTweet = ({status}) => twitter.post('statuses/update', {status});
+export const sendTweet = ({status}) => twitter.post('statuses/update', {status});
