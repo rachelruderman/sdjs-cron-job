@@ -33,6 +33,7 @@ app.listen(process.env.PORT || 5000)
 
 const test = async () => {
     try {
+        moment.tz.setDefault("America/Los_Angeles");
         const meetupsTomorrow   = await getMeetups({when: 'tomorrow'});
         const shouldCreatePost  = (meetupsTomorrow.data.length > 0);
 
