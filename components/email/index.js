@@ -35,6 +35,6 @@ export const sendEmail = async ({message}) => {
         smtpTransport.close();
     }
     catch (error) {
-        process.exit(1);
+        console.log({error})
     }
 };
