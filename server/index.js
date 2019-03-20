@@ -5,7 +5,7 @@ import express  from 'express'
 import {sendEmail} from "../components/email/index";
 import {createTweet} from "../components/twitter/index";
 import {getMeetups} from "../components/meetup/index";
-import moment from 'moment';
+import moment from 'moment-timezone';
 import {shortLink} from "../components/url/index";
 
 const app = express();
@@ -33,7 +33,6 @@ app.listen(process.env.PORT || 5000)
 
 const test = async () => {
     try {
-        moment.tz.setDefault("America/Los_Angeles");
         const meetupsTomorrow   = await getMeetups({when: 'tomorrow'});
         const shouldCreatePost  = (meetupsTomorrow.data.length > 0);
 
@@ -42,7 +41,7 @@ const test = async () => {
                 try {
                     const {time, name, link}    = event;
                     const shortUrl              = await shortLink({link});
-                    const localTime             = moment(time).format('h:mm A');
+                    const localTime             = moment.tz(time, 'America/Los_Angeles').format('h:mm A');
                     const tweet                 = `Join us for ${name} tomorrow @ ${localTime}: ${shortUrl}`;
                     console.log(tweet)
                 }
@@ -64,5 +63,4 @@ const test = async () => {
 
 
 test()
-    .then   ((data)  => console.log({data}))
-    .catch  ((error) => console.log({error}));
+    .catch((error) => console.log({error}));
