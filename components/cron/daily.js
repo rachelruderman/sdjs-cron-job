@@ -13,7 +13,7 @@ export const dailyCronJob = new CronJob(daily9am, async () => {
         const onError       = (error) => errors.push(`error: ${JSON.stringify(error)}`);
 
         try {
-            const meetups   = await getMeetups({when: 'tomorrow'}).catch(e => onError(e));
+            const meetups   = await getMeetups({when: 'tomorrow'});
 
             meetups.data.forEach( async (meetup) => {
                 try {
