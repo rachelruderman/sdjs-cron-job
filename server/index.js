@@ -65,6 +65,6 @@ const test = async () => {
 
 test()
     .then   ((data)  => console.log({data}))
-    .catch  ((error) => console.log({error})
+    .catch  ((error) => console.log({error}));
 
-        console.log(process.env);
+console.log(process.env);
