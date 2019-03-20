@@ -11,11 +11,14 @@ const gmailTransporter = nodemailer.createTransport({
     }
 });
 
-const mailOptions = {
-    from:       dev_EMAIL_ADDRESS,
-    to:         'raquel.rudermano@gmail.com',
-    subject:    'Test', // Subject line
-    html:       '<p>Test</p>'// plain text body
-};
 
-export const sendEmail = ({message}) => gmailTransporter.sendMail(mailOptions);
+export const sendEmail = ({message}) => {
+    const mailOptions = {
+        from:       dev_EMAIL_ADDRESS,
+        to:         dev_EMAIL_ADDRESS,
+        subject:    message, // Subject line
+        html:       '<p>Test</p>'// plain text body
+    };
+
+    gmailTransporter.sendMail(mailOptions);
+};

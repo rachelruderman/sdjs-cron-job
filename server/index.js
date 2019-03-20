@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-import cron     from 'node-cron';
+import cron from 'node-cron';
 import express  from 'express'
 import {sendEmail} from "../components/email/index";
 import {createTweet} from "../components/twitter/index";
@@ -29,7 +29,7 @@ const app = express();
 //     //      - on failure
 // });
 
-app.listen(5000);
+app.listen(process.env.PORT);
 
 const test = async () => {
     try {
@@ -53,9 +53,11 @@ const test = async () => {
         }
 
         // await createTweet({status: 'test'});
-        // await sendEmail({message: 'success'});
+        await sendEmail({message: 'success'});
     }
     catch (error) {
+        await sendEmail({message: 'FAILURE'});
+
         console.log({error})
     }
 };
