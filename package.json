@@ -4,9 +4,9 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server/index.js",
+    "start": "cross-env NODE_ENV=dev nodemon --exec babel-node server/index.js",
     "debug": "nodemon --exec babel-node --inspect server/index.js",
-    "dev": "npm-run-all --parallel debug"
+    "dev": "cross-env NODE_ENV=dev npm-run-all --parallel debug"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "^1.7.0",
     "cron": "^1.7.0",
+    "cross-env": "^5.2.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "fs": "^0.0.1-security",

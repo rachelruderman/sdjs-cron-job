@@ -1,4 +1,3 @@
-require('dotenv').config();
 import shortUrl from 'node-url-shortener';
 
 export const createShortUrl = ({link}) => {
