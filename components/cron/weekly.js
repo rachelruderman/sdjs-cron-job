@@ -15,7 +15,7 @@ export const weeklyCronJob = new CronJob(sunday11am, async () => {
             const meetupNames   = meetups.data.map(meetup => meetup.name);
             const link          = 'https://www.meetup.com/sandiegojs/events';
             const shortUrl      = await createShortUrl({link});
-            const status        = `This week at SDJS ☀️ ${meetupNames.join(', ')}: ${shortUrl}`;
+            const status        = `☀️ This week at SDJS 🌊 ${meetupNames.join('|')}: ${shortUrl}`;
 
             await sendTweet({status});
         }

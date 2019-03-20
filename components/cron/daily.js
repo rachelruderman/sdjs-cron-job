@@ -26,7 +26,7 @@ export const dailyCronJob = new CronJob(daily9am, async () => {
                     const {time, name, link} = meetup;
                     const shortUrl           = await createShortUrl({link});
                     const localTime          = getLocalTime(time);
-                    const status             = `Join us for ${name} tomorrow @ ${localTime}: ${shortUrl}`;
+                    const status             = `It's happening! ${name} tomorrow @ ${localTime}: ${shortUrl}`;
 
                     await sendTweet({status});
                 }
