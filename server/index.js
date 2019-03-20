@@ -48,7 +48,6 @@ const test = async () => {
                 catch (error) {
                     console.log({error})
                 }
-
             })
         }
 
@@ -66,5 +65,3 @@ const test = async () => {
 test()
     .then   ((data)  => console.log({data}))
     .catch  ((error) => console.log({error}));
-
-console.log(process.env);
