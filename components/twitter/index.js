@@ -10,3 +10,5 @@ const twitter = new Twitter({
 });
 
 export const sendTweet = ({status}) => twitter.post('statuses/update', {status});
+
+export const maxTwitterChars = 280;
