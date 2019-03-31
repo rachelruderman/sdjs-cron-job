@@ -8,7 +8,7 @@ const dayInMs           = 86400000;
 export const getMeetups = ({when}) => {
     const today         = Date.now();
     const tomorrow      = Date.now() + dayInMs;
-    const thisWeek      = Date.now() + (dayInMs * 6);
+    const thisWeek      = Date.now() + (dayInMs * 7);
     const baseUrl       = 'https://api.meetup.com/sandiegojs/events';
 
     switch (when) {
