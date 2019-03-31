@@ -5,9 +5,9 @@ import {sendTweet} from "../twitter/index";
 import {sendEmail} from "../email/index";
 import {timezone} from "../../util/timezone";
 
-const sunday11am = '0 11 * * 0';
+const sunday6am = '0 6 * * 0';
 
-export const weeklyCronJob = new CronJob(sunday11am, async () => {
+export const weeklyCronJob = new CronJob(sunday6am, async () => {
         const errors = [];
 
         try {
@@ -15,7 +15,7 @@ export const weeklyCronJob = new CronJob(sunday11am, async () => {
             const meetupNames   = meetups.data.map(meetup => meetup.name);
             const link          = 'https://www.meetup.com/sandiegojs/events';
             const shortUrl      = await createShortUrl({link});
-            const status        = `☀️ This week at SDJS 🌊 ${meetupNames.join('|')}: ${shortUrl}`;
+            const status        = `☀️ This week at SDJS: ${meetupNames.join(' | ')}: ${shortUrl}`;
 
             await sendTweet({status});
         }

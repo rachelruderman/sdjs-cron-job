@@ -6,9 +6,9 @@ import {getLocalTime} from "../../util/getLocalTime";
 import {sendEmail} from "../email/index";
 import {timezone} from "../../util/timezone";
 
-const daily9am = '0 9 * * *';
+const daily6am = '0 6 * * *';
 
-export const dailyCronJob = new CronJob(daily9am, async () => {
+export const dailyCronJob = new CronJob(daily6am, async () => {
         const errors        = [];
 
         const onError       = ((error) => {
