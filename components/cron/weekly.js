@@ -1,6 +1,6 @@
 import {CronJob} from 'cron';
 import {getMeetups} from "../meetup/index";
-import {createShortUrl} from "../url/index";
+import {createShortUrl} from "../short_url/index";
 import {sendTweet} from "../twitter/index";
 import {sendEmail} from "../email/index";
 import {timezone} from "../../util/timezone";
